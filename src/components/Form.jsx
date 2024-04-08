@@ -15,9 +15,12 @@ export default function Form() {
   };
 
   return (
-    <form className="" onSubmit={handleSubmit}>
+    <form
+      className="w-full flex justify-between items-center border rounded overflow-hidden"
+      onSubmit={handleSubmit}
+    >
       <input
-        className=""
+        className="w-full p-4 flex justify-between items-center"
         name="input"
         type="text"
         value={toDoText}
