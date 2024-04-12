@@ -14,10 +14,14 @@ export default function Main() {
     setToDoItems([...toDoItems, newToDo]);
   };
 
+  const deleteToDo = (id) => {
+    setToDoItems(toDoItems.filter((item) => item.id !== id));
+  };
+
   return (
     <main className="max-w-xl w-full p-4 flex flex-1 flex-col justify-center items-center gap-4">
       <Form addToDo={addToDo} />
-      <ToDoList toDoItems={toDoItems} />
+      <ToDoList toDoItems={toDoItems} deleteToDo={deleteToDo} />
     </main>
   );
 }
