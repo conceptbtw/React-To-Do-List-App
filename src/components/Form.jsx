@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Form() {
+export default function Form({ addToDo }) {
   const [toDoText, setToDoText] = useState("");
 
   const handleChange = (event) => {
@@ -10,6 +10,7 @@ export default function Form() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (toDoText.trim() !== "") {
+      addToDo(toDoText);
       setToDoText("");
     }
   };
