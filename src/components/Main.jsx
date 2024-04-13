@@ -10,8 +10,17 @@ export default function Main() {
     const newToDo = {
       id: uuidv4(),
       text: toDoText,
+      completed: false,
     };
     setToDoItems([...toDoItems, newToDo]);
+  };
+
+  const checkToDo = (id) => {
+    setToDoItems(
+      toDoItems.map((item) =>
+        item.id === id ? { ...item, completed: !item.completed } : item
+      )
+    );
   };
 
   const deleteToDo = (id) => {
@@ -21,7 +30,11 @@ export default function Main() {
   return (
     <main className="max-w-xl w-full p-4 flex flex-1 flex-col justify-center items-center gap-4">
       <Form addToDo={addToDo} />
-      <ToDoList toDoItems={toDoItems} deleteToDo={deleteToDo} />
+      <ToDoList
+        toDoItems={toDoItems}
+        checkToDo={checkToDo}
+        deleteToDo={deleteToDo}
+      />
     </main>
   );
 }

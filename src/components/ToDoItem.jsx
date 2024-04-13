@@ -1,9 +1,13 @@
-export default function ToDoItem({ item, deleteToDo }) {
+export default function ToDoItem({ item, checkToDo, deleteToDo }) {
   return (
     <li className="w-full p-4 flex justify-between items-center border rounded">
       <div className="flex justify-between items-center">
-        <button className="w-8 h-8 border rounded" aria-label="check">
-          <i class="fa-solid fa-check"></i>
+        <button
+          className="w-8 h-8 border rounded"
+          aria-label="check"
+          onClick={() => checkToDo(item.id)}
+        >
+          {item.completed ? <i className="fa-solid fa-check"></i> : null}
         </button>
       </div>
       <span className="">{item.text}</span>
