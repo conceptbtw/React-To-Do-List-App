@@ -23,6 +23,14 @@ export default function Main() {
     );
   };
 
+  const editToDo = (id, newToDoText) => {
+    setToDoItems(
+      toDoItems.map((item) =>
+        item.id === id ? { ...item, text: newToDoText } : item
+      )
+    );
+  };
+
   const deleteToDo = (id) => {
     setToDoItems(toDoItems.filter((item) => item.id !== id));
   };
@@ -33,6 +41,7 @@ export default function Main() {
       <ToDoList
         toDoItems={toDoItems}
         checkToDo={checkToDo}
+        editToDo={editToDo}
         deleteToDo={deleteToDo}
       />
     </main>
