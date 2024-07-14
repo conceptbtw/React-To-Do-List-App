@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Form from "./Form";
 import ToDoList from "./ToDoList";
 
 export default function Main() {
-  const [toDoItems, setToDoItems] = useState([]);
+  const [toDoItems, setToDoItems] = useState(() => {
+    const savedToDoItems = localStorage.getItem("toDoItems");
+    return savedToDoItems ? JSON.parse(savedToDoItems) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
+  }, [toDoItems]);
 
   const addToDo = (toDoText) => {
     const newToDo = {
